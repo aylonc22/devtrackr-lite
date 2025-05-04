@@ -61,3 +61,25 @@ button.delete-btn {
 .hidden {
   visibility: hidden;
 }
+
+/* Styling for the CSV buttons section */
+.csv-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Search Bar */
+#search-bar {
+  margin-bottom: 1rem;
+}
+
+button#add-job-btn {
+  background-color: #007BFF;
+  color: white;
+}
+
+button#add-job-btn:hover {
+  background-color: #0056b3;
+}

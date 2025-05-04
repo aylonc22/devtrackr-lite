@@ -9,6 +9,15 @@
 <body>
   <h1>DevTrackr Lite</h1>
 
+  <!-- Export/Import CSV Buttons Section -->
+  <div class="csv-buttons">
+    <input type="file" id="import-csv-btn" accept=".csv" />
+    <button id="export-csv-btn">Export to CSV</button>
+  </div>
+
+  <!-- Search Bar -->
+  <input type="text" id="search-bar" placeholder="Search by company or role..." />
+
   <!-- Add Job Button -->
   <button id="add-job-btn">Add Job</button>
   
@@ -32,10 +41,6 @@
 
   <!-- Job List -->
   <div id="job-list"></div>
-
-  <!-- Export / Import CSV Buttons -->
-  <button id="export-csv-btn">Export to CSV</button>
-  <input type="file" id="import-csv-btn" accept=".csv" />
 
   <script src="app.js"></script>
 </body>

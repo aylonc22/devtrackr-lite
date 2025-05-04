@@ -5,13 +5,19 @@ const closePopupBtn = document.getElementById('close-popup-btn');
 const popupForm = document.getElementById('popup-form');
 const exportCsvBtn = document.getElementById('export-csv-btn');
 const importCsvBtn = document.getElementById('import-csv-btn');
+const searchBar = document.getElementById('search-bar');
 let jobs = JSON.parse(localStorage.getItem('jobs')) || [];
 let editingJobIndex = null;
 
-// Function to render jobs
-function renderJobs() {
+// Function to render jobs based on filter
+function renderJobs(filter = '') {
   jobList.innerHTML = '';
-  jobs.forEach((job, index) => {
+  const filteredJobs = jobs.filter(job =>
+    job.company.toLowerCase().includes(filter.toLowerCase()) ||
+    job.role.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  filteredJobs.forEach((job, index) => {
     const div = document.createElement('div');
     div.className = 'job';
     div.innerHTML = `
@@ -59,7 +65,7 @@ form.addEventListener('submit', (e) => {
 
   localStorage.setItem('jobs', JSON.stringify(jobs));
   popupForm.style.visibility = 'hidden';
-  renderJobs();
+  renderJobs(searchBar.value); // re-render with search filter
 });
 
 // Close Popup
@@ -71,7 +77,7 @@ closePopupBtn.addEventListener('click', () => {
 function deleteJob(index) {
   jobs.splice(index, 1);
   localStorage.setItem('jobs', JSON.stringify(jobs));
-  renderJobs();
+  renderJobs(searchBar.value); // re-render with search filter
 }
 
 // Edit Job
@@ -104,13 +110,18 @@ importCsvBtn.addEventListener('change', (e) => {
       notes: row[3],
     }));
     localStorage.setItem('jobs', JSON.stringify(jobs));
-    renderJobs();
+    renderJobs(searchBar.value); // re-render with search filter
   };
   reader.readAsText(file);
 });
 
 // Open Add Job Popup
 addJobBtn.addEventListener('click', () => openPopupForJob());
+
+// Search functionality
+searchBar.addEventListener('input', (e) => {
+  renderJobs(e.target.value);
+});
 
 // Initial render
 renderJobs();
