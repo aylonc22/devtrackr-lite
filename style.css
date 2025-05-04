@@ -1,40 +1,63 @@
 body {
-    font-family: sans-serif;
-    max-width: 600px;
-    margin: 2rem auto;
-    background: #1a1a1a;
-    color: white;
-    padding: 1rem;
-  }
-  
-  input, select, textarea, button {
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: none;
-  }
-  
-  #job-list .job {
-    background: #333;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  
-  .job .header {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  button.delete-btn {
-    margin-top: 0.5rem;
-    background: crimson;
-    color: white;
-    border: none;
-    padding: 0.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem;
+}
+
+input, select, textarea, button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+}
+
+#job-list .job {
+  background: #333;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.job .header {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+button.delete-btn {
+  margin-top: 0.5rem;
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#popup-form {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+#popup-form form {
+  background: #222;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.hidden {
+  visibility: hidden;
+}

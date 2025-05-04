@@ -8,21 +8,34 @@
 </head>
 <body>
   <h1>DevTrackr Lite</h1>
-  <form id="job-form">
-    <input type="text" id="company" placeholder="Company" required />
-    <input type="text" id="role" placeholder="Job Title" required />
-    <select id="status">
-      <option value="Wishlist">Wishlist</option>
-      <option value="Applied">Applied</option>
-      <option value="Interview">Interview</option>
-      <option value="Offer">Offer</option>
-      <option value="Rejected">Rejected</option>
-    </select>
-    <textarea id="notes" placeholder="Notes (optional)"></textarea>
-    <button type="submit">Add Job</button>
-  </form>
 
+  <!-- Add Job Button -->
+  <button id="add-job-btn">Add Job</button>
+  
+  <!-- Popup Form -->
+  <div id="popup-form" class="hidden">
+    <form id="job-form">
+      <input type="text" id="company" placeholder="Company" required />
+      <input type="text" id="role" placeholder="Job Title" required />
+      <select id="status">
+        <option value="Wishlist">Wishlist</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+      <textarea id="notes" placeholder="Notes (optional)"></textarea>
+      <button type="submit">Save Job</button>
+      <button type="button" id="close-popup-btn">Close</button>
+    </form>
+  </div>
+
+  <!-- Job List -->
   <div id="job-list"></div>
+
+  <!-- Export / Import CSV Buttons -->
+  <button id="export-csv-btn">Export to CSV</button>
+  <input type="file" id="import-csv-btn" accept=".csv" />
 
   <script src="app.js"></script>
 </body>
