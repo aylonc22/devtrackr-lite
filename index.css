@@ -1,0 +1,40 @@
+body {
+    font-family: sans-serif;
+    max-width: 600px;
+    margin: 2rem auto;
+    background: #1a1a1a;
+    color: white;
+    padding: 1rem;
+  }
+  
+  input, select, textarea, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: none;
+  }
+  
+  #job-list .job {
+    background: #333;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .job .header {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  button.delete-btn {
+    margin-top: 0.5rem;
+    background: crimson;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  

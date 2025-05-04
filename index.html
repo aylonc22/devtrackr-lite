@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevTrackr Lite</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>DevTrackr Lite</h1>
+  <form id="job-form">
+    <input type="text" id="company" placeholder="Company" required />
+    <input type="text" id="role" placeholder="Job Title" required />
+    <select id="status">
+      <option value="Wishlist">Wishlist</option>
+      <option value="Applied">Applied</option>
+      <option value="Interview">Interview</option>
+      <option value="Offer">Offer</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+    <textarea id="notes" placeholder="Notes (optional)"></textarea>
+    <button type="submit">Add Job</button>
+  </form>
+
+  <div id="job-list"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
