@@ -1,39 +1,76 @@
 body {
   font-family: sans-serif;
-  max-width: 600px;
-  margin: 2rem auto;
   background: #1a1a1a;
   color: white;
   padding: 1rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+#main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+}
+
+#stats-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 250px; /* Stats section fixed width */
+  padding: 1rem;
+  background: #222;
+  border-radius: 8px;
+  z-index: 10; /* Keep it above other content */
+}
+
+#job-list-container {
+  width: 70%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 300px; /* Adjust for fixed stats section */
+  align-items: center;
 }
 
 input, select, textarea, button {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
-  padding: 0.5rem;
+  padding: 0.75rem; /* Increased padding for bigger input fields */
   border-radius: 6px;
   border: none;
 }
 
+#search-bar, #status-filter, #add-job-btn {
+  width: 80%; /* Shorter width for search bar, status filter, and add job button */
+  max-width: 400px; /* Max width for inputs */
+}
+
 #job-list .job {
   background: #333;
-  padding: 1rem;
+  padding: 2rem; /* Increased padding for bigger job items */
   border-radius: 8px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Increased margin between jobs */
+  font-size: 1.4rem; /* Increased font size */
 }
 
 .job .header {
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem; /* Increase spacing */
 }
 
 button.delete-btn {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   background: crimson;
   color: white;
   border: none;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -65,14 +102,26 @@ button.delete-btn {
 /* Styling for the CSV buttons section */
 .csv-buttons {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Change to column layout */
+  align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-/* Search Bar */
+/* Stats Section */
+.stats {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.stats div {
+  margin-bottom: 0.5rem;
+}
+
 #search-bar {
   margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px; /* Max width for search bar */
 }
 
 button#add-job-btn {
@@ -82,4 +131,20 @@ button#add-job-btn {
 
 button#add-job-btn:hover {
   background-color: #0056b3;
+}
+
+#main-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#stats-container {
+  width: 250px; /* Stats section width */
+  margin-right: 2rem;
+}
+
+#job-list-container {
+  width: 100%;
+  max-width: 900px; /* Max width of job list content */
 }

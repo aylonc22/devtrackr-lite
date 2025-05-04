@@ -6,15 +6,17 @@ const popupForm = document.getElementById('popup-form');
 const exportCsvBtn = document.getElementById('export-csv-btn');
 const importCsvBtn = document.getElementById('import-csv-btn');
 const searchBar = document.getElementById('search-bar');
+const statusFilter = document.getElementById('status-filter');
 let jobs = JSON.parse(localStorage.getItem('jobs')) || [];
 let editingJobIndex = null;
 
-// Function to render jobs based on filter
-function renderJobs(filter = '') {
+// Function to render job list and stats based on filter
+function renderJobs(filter = '', status = '') {
   jobList.innerHTML = '';
   const filteredJobs = jobs.filter(job =>
-    job.company.toLowerCase().includes(filter.toLowerCase()) ||
-    job.role.toLowerCase().includes(filter.toLowerCase())
+    (job.company.toLowerCase().includes(filter.toLowerCase()) ||
+    job.role.toLowerCase().includes(filter.toLowerCase())) &&
+    (status === '' || job.status === status)
   );
 
   filteredJobs.forEach((job, index) => {
@@ -29,6 +31,8 @@ function renderJobs(filter = '') {
     `;
     jobList.appendChild(div);
   });
+
+  updateStats();
 }
 
 // Add or Edit Job
@@ -65,7 +69,7 @@ form.addEventListener('submit', (e) => {
 
   localStorage.setItem('jobs', JSON.stringify(jobs));
   popupForm.style.visibility = 'hidden';
-  renderJobs(searchBar.value); // re-render with search filter
+  renderJobs(searchBar.value, statusFilter.value); // re-render with search filter
 });
 
 // Close Popup
@@ -77,7 +81,7 @@ closePopupBtn.addEventListener('click', () => {
 function deleteJob(index) {
   jobs.splice(index, 1);
   localStorage.setItem('jobs', JSON.stringify(jobs));
-  renderJobs(searchBar.value); // re-render with search filter
+  renderJobs(searchBar.value, statusFilter.value); // re-render with search filter
 }
 
 // Edit Job
@@ -110,7 +114,7 @@ importCsvBtn.addEventListener('change', (e) => {
       notes: row[3],
     }));
     localStorage.setItem('jobs', JSON.stringify(jobs));
-    renderJobs(searchBar.value); // re-render with search filter
+    renderJobs(searchBar.value, statusFilter.value); // re-render with search filter
   };
   reader.readAsText(file);
 });
@@ -120,8 +124,34 @@ addJobBtn.addEventListener('click', () => openPopupForJob());
 
 // Search functionality
 searchBar.addEventListener('input', (e) => {
-  renderJobs(e.target.value);
+  renderJobs(e.target.value, statusFilter.value);
 });
+
+// Status Filter
+statusFilter.addEventListener('change', (e) => {
+  renderJobs(searchBar.value, e.target.value);
+});
+
+// Update Stats
+function updateStats() {
+  const statusCounts = {
+    Wishlist: 0,
+    Applied: 0,
+    Interview: 0,
+    Offer: 0,
+    Rejected: 0
+  };
+
+  jobs.forEach(job => {
+    statusCounts[job.status]++;
+  });
+
+  document.getElementById('wishlist-count').innerText = `Wishlist: ${statusCounts.Wishlist}`;
+  document.getElementById('applied-count').innerText = `Applied: ${statusCounts.Applied}`;
+  document.getElementById('interview-count').innerText = `Interview: ${statusCounts.Interview}`;
+  document.getElementById('offer-count').innerText = `Offer: ${statusCounts.Offer}`;
+  document.getElementById('rejected-count').innerText = `Rejected: ${statusCounts.Rejected}`;
+}
 
 // Initial render
 renderJobs();

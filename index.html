@@ -7,40 +7,66 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <h1>DevTrackr Lite</h1>
+  <!-- Main Container for Flex Layout -->
+  <div id="main-container">
+    <!-- Stats Section on the Left (Fixed) -->
+    <div id="stats-container">
+      <h2>Status Counts:</h2>
+      <div id="wishlist-count">Wishlist: 0</div>
+      <div id="applied-count">Applied: 0</div>
+      <div id="interview-count">Interview: 0</div>
+      <div id="offer-count">Offer: 0</div>
+      <div id="rejected-count">Rejected: 0</div>
 
-  <!-- Export/Import CSV Buttons Section -->
-  <div class="csv-buttons">
-    <input type="file" id="import-csv-btn" accept=".csv" />
-    <button id="export-csv-btn">Export to CSV</button>
-  </div>
+      <!-- Export/Import CSV Buttons Section -->
+      <div class="csv-buttons">
+        <input type="file" id="import-csv-btn" accept=".csv" />
+        <button id="export-csv-btn">Export to CSV</button>
+      </div>
+    </div>
 
-  <!-- Search Bar -->
-  <input type="text" id="search-bar" placeholder="Search by company or role..." />
+    <!-- Main Content Section for Job List and Search -->
+    <div id="job-list-container">
+      <h1>DevTrackr Lite</h1>
 
-  <!-- Add Job Button -->
-  <button id="add-job-btn">Add Job</button>
-  
-  <!-- Popup Form -->
-  <div id="popup-form" class="hidden">
-    <form id="job-form">
-      <input type="text" id="company" placeholder="Company" required />
-      <input type="text" id="role" placeholder="Job Title" required />
-      <select id="status">
+      <!-- Search Bar -->
+      <input type="text" id="search-bar" placeholder="Search by company or role..." />
+
+      <!-- Status Filter -->
+      <select id="status-filter">
+        <option value="">All Statuses</option>
         <option value="Wishlist">Wishlist</option>
         <option value="Applied">Applied</option>
         <option value="Interview">Interview</option>
         <option value="Offer">Offer</option>
         <option value="Rejected">Rejected</option>
       </select>
-      <textarea id="notes" placeholder="Notes (optional)"></textarea>
-      <button type="submit">Save Job</button>
-      <button type="button" id="close-popup-btn">Close</button>
-    </form>
-  </div>
 
-  <!-- Job List -->
-  <div id="job-list"></div>
+      <!-- Add Job Button -->
+      <button id="add-job-btn">Add Job</button>
+
+      <!-- Job List -->
+      <div id="job-list"></div>
+
+      <!-- Popup Form -->
+      <div id="popup-form" class="hidden">
+        <form id="job-form">
+          <input type="text" id="company" placeholder="Company" required />
+          <input type="text" id="role" placeholder="Job Title" required />
+          <select id="status">
+            <option value="Wishlist">Wishlist</option>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+          <textarea id="notes" placeholder="Notes (optional)"></textarea>
+          <button type="submit">Save Job</button>
+          <button type="button" id="close-popup-btn">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
